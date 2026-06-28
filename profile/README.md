@@ -13,7 +13,7 @@
 
 OpenShock, formerly ShockLink, is a opensource platform to control various shocking devices via the internet and much more.
 
-![Web Interface](https://openshock.org/images/webui/shockers.webp)
+![Web Interface](https://openshock.org/images/frontend/dark/shockers-page.webp)
 
 We currently mainly focus on controlling premade shockers via esp32 using 433 MHz RF.
 
@@ -29,7 +29,6 @@ We currently mainly focus on controlling premade shockers via esp32 using 433 MH
 
 ## WIP:
 + Local server (on the ESP directly)
-+ New Frontend
 + Dashboard to group shockers together and have greater control
 
 ## Officially hosted instance
