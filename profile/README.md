@@ -1,6 +1,6 @@
 <center><div align="center">
 
-<img alt="OpenShock" width="800px" src="https://openshock.org/logo.svg" />
+<img alt="OpenShock" width="800px" src="https://openshock.org/branding/Logo/NavbarLogoSpin.svg" />
 
 ---
 
