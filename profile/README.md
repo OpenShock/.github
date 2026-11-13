@@ -36,5 +36,16 @@ We currently mainly focus on controlling premade shockers via esp32 using 433 MH
 You can find the officially hosted instance at [openshock.app](https://openshock.app)
 
 
+## Security
+
+Found a security vulnerability? Please report it privately. See our [security policy](https://github.com/OpenShock/.github/blob/main/SECURITY.md).
+
+## Contributing and support
+
+- [Contributing guide](https://github.com/OpenShock/.github/blob/main/CONTRIBUTING.md)
+- [Getting help](https://github.com/OpenShock/.github/blob/main/SUPPORT.md)
+- [Code of Conduct](https://github.com/OpenShock/.github/blob/main/CODE_OF_CONDUCT.md)
+- [Maintainers](https://github.com/OpenShock/.github/blob/main/MAINTAINERS.md)
+
 ## Discord
 https://discord.gg/OpenShock

@@ -1,0 +1,55 @@
+name: security-txt-check
+
+# Verifies that every public OpenShock host serves a valid, unexpired security.txt (RFC 9116).
+# A failing scheduled run means a file is missing or needs its Expires date renewed.
+
+on:
+  schedule:
+    - cron: '0 8 1 * *'
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check security.txt on all hosts
+        env:
+          HOSTS: >-
+            openshock.org
+            openshock.app
+            api.openshock.app
+            de1-gateway.openshock.app
+            wiki.openshock.org
+          MIN_DAYS_LEFT: '45'
+        run: |
+          status=0
+          now=$(date -u +%s)
+          for host in $HOSTS; do
+            url="https://$host/.well-known/security.txt"
+            if ! body=$(curl -fsS --max-time 20 "$url"); then
+              echo "::error::$url could not be fetched"
+              status=1
+              continue
+            fi
+            if ! grep -qi '^Contact:' <<<"$body"; then
+              echo "::error::$url has no Contact field"
+              status=1
+            fi
+            expires=$(grep -i '^Expires:' <<<"$body" | head -n 1 | cut -d: -f2- | tr -d ' \r')
+            if [ -z "$expires" ] || ! expires_s=$(date -u -d "$expires" +%s); then
+              echo "::error::$url has no valid Expires field"
+              status=1
+              continue
+            fi
+            days_left=$(( (expires_s - now) / 86400 ))
+            if [ "$days_left" -lt "$MIN_DAYS_LEFT" ]; then
+              echo "::error::$url expires in $days_left days ($expires); renew it"
+              status=1
+            else
+              echo "$url is valid for another $days_left days"
+            fi
+          done
+          exit $status

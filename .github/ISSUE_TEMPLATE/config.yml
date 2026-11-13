@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/OpenShock/.github/blob/main/SECURITY.md#reporting-a-vulnerability
+    about: Never report security vulnerabilities in public issues. Report them privately as described in our security policy.
+  - name: Questions and support
+    url: https://discord.gg/OpenShock
+    about: Ask questions and get help from the community on Discord.
+  - name: Documentation
+    url: https://wiki.openshock.org
+    about: Setup guides, troubleshooting and developer documentation.
